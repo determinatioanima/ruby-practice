@@ -14,13 +14,15 @@
 <%= f.collection_select(:category_id, Category.all, :id, :name)%>
 
 <%= f.fields_for :location do |location_form| %>
-<p>
-<%= location_form.label :name, "Location Name" %>
-<%= location_form.text_field :name %>
+  <p>
+  <%= location_form.label :name, "Location Name" %>
+  <%= location_form.text_field :name %>
+  
+  <% unless location_form.object.new_record? %>
+      <%= location_form.label :_destroy, 'Remove:' %>
+      <%= location_form.check_box :_destroy %>
+  <% end %>
+  </p>
+<% end %>
 
-<% unless location_form.object.new_record? %>
-    <%= location_form.label :_destroy, 'Remove:' %>
-    <%= location_form.check_box :_destroy %>
-<% end %>
-</p>
-<% end %>
+<%= f.collection_check_boxes(:group_ids, Group.all, :id, :name) %>

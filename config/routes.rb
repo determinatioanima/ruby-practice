@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   resources :events do
     resource :location, :controller => 'event_locations'
-end
+  end
   
   root 'billboard#index' #root :to => "billboard#index"
   
