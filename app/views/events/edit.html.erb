@@ -1,5 +1,5 @@
-<%= form_for @event, :url => { :controller => 'events', :action => 'update', :id => @event } do |f| %>
+<%= form_for @event, :url => event_path(@event), :method => :patch do |f| %>
     <%= render :partial => 'form', :locals => { :f => f } %>
     <% #引用_form.html.erb這個局部樣板，並將變數f傳遞進去變成區域變數 %>
     <%= f.submit "Update" %>
-<% end %>
+<% end # :url和:method也可以省略，Rails自動會根據@event是新建的還是修改來決定要不要使用PATCH。%>

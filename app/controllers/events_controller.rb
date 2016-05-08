@@ -13,7 +13,7 @@ class EventsController < ApplicationController
     def create
       @event = Event.new(event_params)
       if @event.save
-        redirect_to :action => :index
+        redirect_to events_url #:action => :index
         flash[:notice] = "event was successfully created"
         #在這個create Action中，使用者並沒有真的看到任何頁面
         #特殊flash變數，讓訊息可以被帶到另一個 action，它提供使用者一些有用的資訊
@@ -35,7 +35,7 @@ class EventsController < ApplicationController
     def update
       if @event.update(event_params)
         flash[:notice] = "event was successfully updated"
-        redirect_to :action => :show, :id => @event
+        redirect_to event_url(@event) #:action => :show, :id => @event
       else
         render :action => :edit
       end
