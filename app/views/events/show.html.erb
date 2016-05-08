@@ -1,4 +1,6 @@
 <%= @event.name %>
 <%= simple_format(@event.description) %>
+<p>Category: <%= @event.category.name %><p>
 <%#內建的View Helper，它的作用是可以將換行字元\n置換成<br />，有基本的HTML換行效果。%>
+<%# debug(@event) %>
 <p><%= link_to 'Back to index', events_path  %></p>

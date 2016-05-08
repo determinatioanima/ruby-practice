@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
   
   resources :people
-  resources :events #routes.rb裡面越上面的規則優先權較高
+  
+  resources :events do
+    resources :attendees, :controller => 'event_attendees'
+  end #routes.rb裡面越上面的規則優先權較高
+  
+  resources :events do
+    resource :location, :controller => 'event_locations'
+end
   
   root 'billboard#index' #root :to => "billboard#index"
   
