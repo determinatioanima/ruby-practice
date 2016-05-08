@@ -58,6 +58,11 @@ class EventsController < ApplicationController
       flash[:alert] = "event was successfully deleted"
       redirect_to :action => :index
     end
+    
+    def latest
+      @events = Event.order("id DESC").limit(3)
+    end
+    
     #Rails的程式風格非常注重變數命名的單數複數，像上述的index Action中是用@events複數命名，代表這是一個群集陣列。其他則是用@event單數命名。
     private #private以下的所有方法都會變成private方法，所以記得放在檔案的最底下。
 

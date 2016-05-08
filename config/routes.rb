@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   
   resources :events do
     resources :attendees, :controller => 'event_attendees'
-  end #routes.rb裡面越上面的規則優先權較高
-  
-  resources :events do
     resource :location, :controller => 'event_locations'
-  end
-  
+    collection do
+        get :latest
+    end
+  end #routes.rb裡面越上面的規則優先權較高
+
   root 'billboard#index' #root :to => "billboard#index"
   
   #match ':controller(/:action(/:id(.:format)))', :via => :all #外卡路由
