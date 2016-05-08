@@ -1,0 +1,5 @@
+<%= form_for @event, :url => { :controller => 'events', :action => 'update', :id => @event } do |f| %>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <% #引用_form.html.erb這個局部樣板，並將變數f傳遞進去變成區域變數 %>
+    <%= f.submit "Update" %>
+<% end %>
